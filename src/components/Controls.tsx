@@ -1,4 +1,4 @@
-import { Component } from "solid-js";
+import { Component, createEffect } from "solid-js";
 
 import Button from "./Button";
 
@@ -11,9 +11,40 @@ type Props = {
   onNextState: () => void;
   onTogglePlay: () => void;
   isPlaying: boolean;
+  hasHistory: boolean;
 };
 
 const Controls: Component<Props> = (props) => {
+  function renderPreviousButton() {
+    if (props.isPlaying || !props.hasHistory) {
+      return (
+        <Button variant="blue" disabled>
+          <icons.Previous />
+        </Button>
+      );
+    }
+    return (
+      <Button onclick={props.onPreviousState} variant="blue">
+        <icons.Previous />
+      </Button>
+    );
+  }
+
+  function renderNextButton() {
+    if (props.isPlaying) {
+      return (
+        <Button variant="blue" disabled>
+          <icons.Next />
+        </Button>
+      );
+    }
+    return (
+      <Button onclick={props.onNextState} variant="blue">
+        <icons.Next />
+      </Button>
+    );
+  }
+
   return (
     <div className="w-full flex justify-evenly">
       <Button onclick={props.onRandom} variant="teal">
@@ -22,25 +53,8 @@ const Controls: Component<Props> = (props) => {
       <Button onclick={props.onReset} variant="cyan">
         <icons.Reset />
       </Button>
-      {props.isPlaying ? (
-        <>
-          <Button variant="blue" disabled>
-            <icons.Previous />
-          </Button>
-          <Button variant="blue" disabled>
-            <icons.Skip />
-          </Button>
-        </>
-      ) : (
-        <>
-          <Button onclick={props.onPreviousState} variant="blue">
-            <icons.Previous />
-          </Button>
-          <Button onclick={props.onNextState} variant="blue">
-            <icons.Skip />
-          </Button>
-        </>
-      )}
+      {renderPreviousButton()}
+      {renderNextButton()}
       {props.isPlaying ? (
         <Button onclick={props.onTogglePlay} variant="red">
           <icons.Pause />
