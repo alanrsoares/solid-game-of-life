@@ -17,11 +17,13 @@ import { nextState } from "./lib/game";
 import Profiler from "./components/Profiler";
 import GridContainer from "./components/GridContainer";
 import CellItem from "./components/CellItem";
-import Button from "./components/Button";
+import Controls from "./components/Controls";
 
 const App: Component = () => {
-  const [getSize, _setSize] = createSignal(3);
-  const gridSize = SIZES[getSize()].grid;
+  const [sizeIndex, _setSizeIndex] = createSignal<
+    0 | 1 | 2 | 3 | 4 | 5 | 6 | 7
+  >(3);
+  const gridSize = SIZES[sizeIndex()].grid;
 
   const withToggles = (grid: Grid): Grid => {
     return grid.map((row) =>
@@ -38,6 +40,7 @@ const App: Component = () => {
   const [getGrid, setGrid] = createSignal(
     withToggles(createRandomGrid(gridSize))
   );
+
   const [getFrames, setFrames] = createSignal(0);
 
   const handleRandom = () =>
@@ -84,14 +87,13 @@ const App: Component = () => {
     <main className="grid min-h-screen bg-gray-800 place-items-center text-white">
       <div className="grid gap-8 place-items-center md:-mt-24">
         <h1 className="text-xl">Solid Game of Life</h1>
-        <div className="w-full flex justify-between">
-          <Button onclick={handleRandom}>Random</Button>
-          <Button onclick={handleReset}>Reset</Button>
-          <Button onclick={handleNextState}>Next</Button>
-          <Button onclick={handleTogglePlay}>
-            {isPlaying() ? "Pause" : "Play"}
-          </Button>
-        </div>
+        <Controls
+          onRandom={handleRandom}
+          onTogglePlay={handleTogglePlay}
+          onReset={handleReset}
+          onNextState={handleNextState}
+          isPlaying={isPlaying()}
+        />
         <GridContainer>
           <div>
             <Index each={getGrid()}>
@@ -103,7 +105,7 @@ const App: Component = () => {
                         onMouseDown={handleCellMouseEvent(cell)}
                         onMouseMove={handleCellMouseEvent(cell)}
                         isAlive={cell().state()}
-                        sizeIndex={getSize()}
+                        sizeIndex={sizeIndex()}
                         bgColor={
                           cell().state()
                             ? getRainbowHSL(y, x, gridSize)
