@@ -20,7 +20,7 @@ import CellItem from "./components/CellItem";
 import Button from "./components/Button";
 
 const App: Component = () => {
-  const [getSize, _setSize] = createSignal(1);
+  const [getSize, _setSize] = createSignal(3);
   const gridSize = SIZES[getSize()].grid;
 
   const withToggles = (grid: Grid): Grid => {
@@ -103,7 +103,7 @@ const App: Component = () => {
                         onMouseDown={handleCellMouseEvent(cell)}
                         onMouseMove={handleCellMouseEvent(cell)}
                         isAlive={cell().state()}
-                        sizeIndex={1}
+                        sizeIndex={getSize()}
                         bgColor={
                           cell().state()
                             ? getRainbowHSL(y, x, gridSize)
