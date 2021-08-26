@@ -1,4 +1,4 @@
-export const DEAD_CELL_COLOR = "#222";
+export const DEAD_CELL_COLOR = "#262626";
 
 export const SIZES = [
   {

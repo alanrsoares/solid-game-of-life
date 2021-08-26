@@ -26,8 +26,11 @@ const Profiler: Component<Props> = (props) => {
   });
 
   return (
-    <div classList={{ "opacity-0 border": fps() <= 0 }}>
-      Profiler {fps()} fps
+    <div
+      className="rounded-full bg-dark text-accent p-2 px-4 font-bold"
+      classList={{ "opacity-0 border": fps() <= 0 }}
+    >
+      {fps()} fps
     </div>
   );
 };

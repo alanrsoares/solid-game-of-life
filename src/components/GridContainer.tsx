@@ -2,8 +2,8 @@ import { Component } from "solid-js";
 
 const GridContainer: Component = (props) => {
   return (
-    <div className="flex m-auto border-4 border-[#222] border-2 rounded-lg p-1">
-      <div>{props.children}</div>
+    <div className="flex m-auto ring-4 ring-dark bg-dark rounded-xl p-1">
+      <div className="border-2 rounded-lg border-dark">{props.children}</div>
     </div>
   );
 };
