@@ -1,43 +1,113 @@
-import { Component, createSignal, Index } from "solid-js";
-import { createStore } from "solid-js/store";
+import {
+  Component,
+  createSignal,
+  Index,
+  batch,
+  Accessor,
+  Show,
+} from "solid-js";
+import { inc } from "ramda";
 
-import { createRandomGrid } from "./lib/utils";
 import { SIZES } from "./lib/config";
+import { createGrid, createRandomGrid } from "./lib/utils";
+import { Cell, Grid } from "./lib/types";
+import { getRainbowHSL } from "./lib/colors";
+import { nextState } from "./lib/game";
 
-import Controls from "./components/Controls";
 import Profiler from "./components/Profiler";
 import GridContainer from "./components/GridContainer";
-import { getRainbowHSL } from "./lib/colors";
-import Cell from "./components/Cell";
-
-const getInitialState = (gridSize: number) => ({
-  grid: createRandomGrid(gridSize),
-});
+import CellItem from "./components/CellItem";
+import Button from "./components/Button";
 
 const App: Component = () => {
-  const [getSize, setSize] = createSignal(1);
+  const [getSize, _setSize] = createSignal(1);
   const gridSize = SIZES[getSize()].grid;
-  const [store, setState] = createStore(getInitialState(gridSize));
 
-  const handleRandom = () => setState("grid", () => createRandomGrid(gridSize));
+  const withToggles = (grid: Grid): Grid => {
+    return grid.map((row) =>
+      row.map((cell) => {
+        const [cellState, setCellState] = createSignal(cell.state());
+        return {
+          state: cellState,
+          toggle: () => setCellState(!cellState()),
+        };
+      })
+    );
+  };
+
+  const [getGrid, setGrid] = createSignal(
+    withToggles(createRandomGrid(gridSize))
+  );
+  const [getFrames, setFrames] = createSignal(0);
+
+  const handleRandom = () =>
+    setGrid(() => withToggles(createRandomGrid(gridSize)));
+
+  const handleNextState = () => setGrid((grid) => withToggles(nextState(grid)));
+
+  const handleReset = () => {
+    setGrid(() => withToggles(createGrid(gridSize)));
+  };
+
+  let frameId = 0;
+  let [isPlaying, setIsPlaying] = createSignal(false);
+
+  const handleTogglePlay = () => {
+    if (isPlaying()) {
+      setIsPlaying(false);
+      window.cancelAnimationFrame(frameId);
+
+      setFrames(0);
+      return;
+    }
+
+    setIsPlaying(true);
+
+    function tick() {
+      batch(() => {
+        setGrid(nextState);
+        setFrames(inc);
+      });
+
+      if (isPlaying) {
+        frameId = window.requestAnimationFrame(tick);
+      }
+    }
+    tick();
+  };
+
+  const handleCellMouseEvent = (cell: Accessor<Cell>) => (e: MouseEvent) => {
+    if (e.button === 0 && e.buttons === 1) cell().toggle();
+  };
 
   return (
     <main className="grid min-h-screen bg-gray-800 place-items-center text-white">
       <div className="grid gap-8 place-items-center md:-mt-24">
         <h1 className="text-xl">Solid Game of Life</h1>
-        <Controls onRandom={handleRandom} />
+        <div className="w-full flex justify-between">
+          <Button onclick={handleRandom}>Random</Button>
+          <Button onclick={handleReset}>Reset</Button>
+          <Button onclick={handleNextState}>Next</Button>
+          <Button onclick={handleTogglePlay}>
+            {isPlaying() ? "Pause" : "Play"}
+          </Button>
+        </div>
         <GridContainer>
           <div>
-            <Index each={store.grid}>
+            <Index each={getGrid()}>
               {(row, y) => (
                 <div className="flex flex-1">
                   <Index each={row()}>
-                    {(isAlive, x) => (
-                      <Cell
-                        isAlive={isAlive()}
+                    {(cell, x) => (
+                      <CellItem
+                        onMouseDown={handleCellMouseEvent(cell)}
+                        onMouseMove={handleCellMouseEvent(cell)}
+                        isAlive={cell().state()}
                         sizeIndex={1}
                         bgColor={
-                          isAlive() ? getRainbowHSL(y, x, gridSize) : undefined
+                          cell().state()
+                            ? getRainbowHSL(y, x, gridSize)
+                            : undefined
                         }
                       />
                     )}
@@ -47,7 +117,7 @@ const App: Component = () => {
             </Index>
           </div>
         </GridContainer>
-        <Profiler />
+        <Profiler frames={getFrames()} />
       </div>
     </main>
   );

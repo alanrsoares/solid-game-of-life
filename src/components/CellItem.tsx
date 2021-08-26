@@ -7,12 +7,13 @@ type Props = JSX.IntrinsicElements["div"] & {
   sizeIndex: number;
 };
 
-const Cell: Component<Props> = (props) => {
+const CellItem: Component<Props> = (props) => {
   const cellSize = SIZES[props.sizeIndex ?? 0].cell;
   return (
     <div
       role="button"
       className="rounded-full m-px"
+      onclick={props.onClick}
       style={`background-color: ${
         props.bgColor ?? DEAD_CELL_COLOR
       }; height: ${cellSize}; width: ${cellSize}; transition: background-color 0.1s ease-out;`}
@@ -21,4 +22,4 @@ const Cell: Component<Props> = (props) => {
   );
 };
 
-export default Cell;
+export default CellItem;

@@ -3,5 +3,6 @@ export interface Point {
   x: number;
 }
 
-export type Row = boolean[];
+export type Cell = { state: () => boolean; toggle: () => void };
+export type Row = Cell[];
 export type Grid = Row[];
