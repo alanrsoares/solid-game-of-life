@@ -2,7 +2,7 @@
   "name": "vite-template-solid",
   "version": "0.0.0",
   "description": "",
-  "homepage": "https://alanrsoares.github.io/solid-game-of-life/",
+  "homepage": "https://alanrsoares.github.io/solid-game-of-life",
   "scripts": {
     "start": "vite",
     "dev": "vite",
