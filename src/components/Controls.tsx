@@ -16,14 +16,11 @@ type Props = {
 
 const Controls: Component<Props> = (props) => {
   function renderPreviousButton() {
-    if (props.isPlaying || !props.hasHistory) {
-      return (
-        <Button variant="blue" disabled>
-          <icons.Previous />
-        </Button>
-      );
-    }
-    return (
+    return props.isPlaying || !props.hasHistory ? (
+      <Button variant="blue" disabled>
+        <icons.Previous />
+      </Button>
+    ) : (
       <Button onclick={props.onPreviousState} variant="blue">
         <icons.Previous />
       </Button>
@@ -31,14 +28,11 @@ const Controls: Component<Props> = (props) => {
   }
 
   function renderNextButton() {
-    if (props.isPlaying) {
-      return (
-        <Button variant="blue" disabled>
-          <icons.Next />
-        </Button>
-      );
-    }
-    return (
+    return props.isPlaying ? (
+      <Button variant="blue" disabled>
+        <icons.Next />
+      </Button>
+    ) : (
       <Button onclick={props.onNextState} variant="blue">
         <icons.Next />
       </Button>
