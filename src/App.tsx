@@ -74,6 +74,7 @@ const App: Component = () => {
   const handleReset = () => {
     batch(() => {
       history = [];
+      setHasHistory(false);
       setGrid(() => withToggles(createGrid(gridSize)));
     });
   };
