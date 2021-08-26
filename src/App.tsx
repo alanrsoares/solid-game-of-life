@@ -1,11 +1,4 @@
-import {
-  Component,
-  createSignal,
-  Index,
-  batch,
-  Accessor,
-  Show,
-} from "solid-js";
+import { Component, createSignal, Index, batch, Accessor } from "solid-js";
 import { inc } from "ramda";
 
 import { SIZES } from "./lib/config";
@@ -57,10 +50,13 @@ const App: Component = () => {
 
   const handleTogglePlay = () => {
     if (isPlaying()) {
-      setIsPlaying(false);
       window.cancelAnimationFrame(frameId);
 
-      setFrames(0);
+      batch(() => {
+        setGrid(withToggles);
+        setIsPlaying(false);
+        setFrames(0);
+      });
       return;
     }
 
@@ -72,7 +68,7 @@ const App: Component = () => {
         setFrames(inc);
       });
 
-      if (isPlaying) {
+      if (isPlaying()) {
         frameId = window.requestAnimationFrame(tick);
       }
     }
