@@ -1,5 +1,5 @@
 import { Component, createSignal, Index, batch, Accessor } from "solid-js";
-import { inc } from "ramda";
+import { inc } from "rambda";
 
 import { SIZES } from "./lib/config";
 import { createGrid, createRandomGrid } from "./lib/utils";

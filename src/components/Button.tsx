@@ -1,5 +1,5 @@
 import { Component, JSX } from "solid-js";
-import { omit } from "ramda";
+import { omit } from "rambda";
 
 type Props = JSX.IntrinsicElements["button"] & {
   variant?: "blue" | "red" | "cyan" | "green" | "teal";

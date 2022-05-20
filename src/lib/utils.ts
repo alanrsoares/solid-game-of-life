@@ -1,4 +1,4 @@
-import { range } from "ramda";
+import { range } from "rambda";
 import type { Grid } from "./types";
 
 export const createGrid = (size: number): Grid =>
