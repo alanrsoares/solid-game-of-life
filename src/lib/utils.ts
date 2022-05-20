@@ -13,27 +13,3 @@ export const createRandomGrid = (size: number): Grid =>
       toggle: () => {},
     }))
   );
-
-export const calculateFrameRate = (
-  ticks = 0,
-  startedAt = Date.now(),
-  now = Date.now()
-) => (startedAt ? Math.ceil(ticks / ((now - startedAt) / 1000)) : null);
-
-export const camelToSnakeCase = (s: string) =>
-  s.replace(/([A-Z])/g, (x) => `-${x.toLocaleLowerCase()}`);
-
-/**
- * converts a key-value object into a custom css properties
- *
- * @param obj
- * { foo: "bar", bar: "baz"}
- *
- * @example
- *  toCssProps({ color: "white", background: "black", fontSize: 10 });
- *  // "--color:white;--background:black;--font-size:10"
- */
-export const toCssProps = (obj: Record<string, string | number>) =>
-  Object.entries(obj)
-    .map(([k, v]) => `--${camelToSnakeCase(k)}:${v}`)
-    .join(";");

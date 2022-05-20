@@ -1,7 +1,6 @@
-import { Component, createEffect } from "solid-js";
+import { Component } from "solid-js";
 
 import Button from "./Button";
-
 import * as icons from "./icons";
 
 type Props = {

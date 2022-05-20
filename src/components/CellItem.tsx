@@ -1,5 +1,5 @@
 import { Component, JSX } from "solid-js";
-import { DEAD_CELL_COLOR, SIZES } from "../lib/config";
+import { DEAD_CELL_COLOR, SIZES } from "~/lib/config";
 
 type Props = JSX.IntrinsicElements["div"] & {
   isAlive: boolean;
