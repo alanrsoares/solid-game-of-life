@@ -1,6 +1,6 @@
 import { Component, JSX } from "solid-js";
 import { omit } from "rambda";
-import { tw } from "../lib/styled";
+import { tw } from "~/lib/styled";
 
 type Props = JSX.IntrinsicElements["button"] & {
   variant?: "blue" | "red" | "cyan" | "green" | "teal";
@@ -17,7 +17,6 @@ const Button: Component<Props> = (props) => {
   return (
     <StyedButton
       role="button"
-      class=""
       classList={{
         "bg-blue-800 ring-blue-800/60":
           props.variant === "blue" || !props.variant,
@@ -26,7 +25,7 @@ const Button: Component<Props> = (props) => {
         "bg-cyan-800 ring-cyan-800/60": props.variant === "cyan",
         "bg-green-800 ring-green-800/60": props.variant === "green",
       }}
-      {...omit(["variant"], props)}
+      {...omit(["variant", "class"], props)}
     />
   );
 };

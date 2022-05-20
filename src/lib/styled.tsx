@@ -1,5 +1,7 @@
+import { omit } from "rambda";
 import { JSX, JSXElement } from "solid-js";
 import h from "solid-js/h";
+
 type TagKind = keyof JSX.IntrinsicElements;
 
 const TAGS: TagKind[] = [
@@ -180,7 +182,10 @@ export const tw = TAGS.reduce(
   (acc, Tag) => ({
     ...acc,
     [Tag]: (className: TemplateStringsArray) => (props: any) =>
-      h(Tag, { ...props, class: String(className) }),
+      h(Tag, {
+        class: (props.class ?? "").concat(String(className)),
+        ...omit(["class"], props),
+      }),
   }),
   {} as {
     [K in TagKind]: (
