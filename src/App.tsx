@@ -13,6 +13,8 @@ import CellItem from "./components/CellItem";
 import Controls from "./components/Controls";
 import { SOLID_LOGO } from "./components/icons";
 
+import styles from "./App.module.css";
+
 function truncate<T>(length: number, xs: T[]) {
   return xs.length > length ? xs.slice(0, length) : xs;
 }
@@ -111,8 +113,8 @@ const App: Component = () => {
   };
 
   return (
-    <main className="grid h-screen bg-gradient-to-br from-dark to-primary place-items-center text-light">
-      <div className="grid gap-8 place-items-center md:-mt-24 transform ">
+    <main className={styles.shell}>
+      <div className="grid gap-8 place-items-center md:-mt-24 transform">
         <h1 className="text-4xl w-full ">
           <div className="flex flex-wrap mx-auto justify-evenly items-center">
             {SOLID_LOGO}

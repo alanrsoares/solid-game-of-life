@@ -1,0 +1,3 @@
+.shell {
+  @apply grid h-screen bg-gradient-to-br from-dark to-primary place-items-center text-light;
+}
