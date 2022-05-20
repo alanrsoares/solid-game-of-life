@@ -1,15 +1,23 @@
 import { Component, JSX } from "solid-js";
 import { omit } from "rambda";
+import { tw } from "../lib/styled";
 
 type Props = JSX.IntrinsicElements["button"] & {
   variant?: "blue" | "red" | "cyan" | "green" | "teal";
 };
 
+const StyedButton = tw.button`
+  rounded-full text-white h-16 w-16 p-4 grid place-items-center 
+  hover:opacity-75 focus:(outline-none ring ring-offset-gray-800 ring-offset-2) 
+  disabled:(opacity-50 filter grayscale cursor-not-allowed) shadow-xl 
+  transition transition-all
+`;
+
 const Button: Component<Props> = (props) => {
   return (
-    <button
+    <StyedButton
       role="button"
-      class="rounded-full text-white h-16 w-16 p-4 grid place-items-center hover:opacity-75 focus:(outline-none ring ring-offset-gray-800 ring-offset-2) disabled:(opacity-50 filter grayscale cursor-not-allowed) shadow-xl transition transition-all"
+      class=""
       classList={{
         "bg-blue-800 ring-blue-800/60":
           props.variant === "blue" || !props.variant,
