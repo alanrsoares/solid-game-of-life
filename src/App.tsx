@@ -113,12 +113,12 @@ const App: Component = () => {
   };
 
   return (
-    <main className={styles.shell}>
-      <div className="grid gap-8 place-items-center md:-mt-24 transform">
-        <h1 className="text-4xl w-full ">
-          <div className="flex flex-wrap mx-auto justify-evenly items-center">
+    <main class={styles.shell}>
+      <div class="grid gap-8 place-items-center md:-mt-24 transform">
+        <h1 class="text-4xl w-full ">
+          <div class="flex flex-wrap mx-auto justify-evenly items-center">
             {SOLID_LOGO}
-            <div className="text-[#d5dce5]">Game of Life</div>
+            <div class="text-[#d5dce5]">Game of Life</div>
           </div>
         </h1>
         <Controls
@@ -134,7 +134,7 @@ const App: Component = () => {
           <div>
             <Index each={grid()}>
               {(row, y) => (
-                <div className="flex flex-1">
+                <div class="flex flex-1">
                   <Index each={row()}>
                     {(cell, x) => (
                       <CellItem

@@ -40,7 +40,7 @@ const Controls: Component<Props> = (props) => {
   }
 
   return (
-    <div className="w-full flex justify-evenly">
+    <div class="w-full flex justify-evenly">
       <Button onclick={props.onRandom} variant="teal">
         <icons.Shuffle />
       </Button>

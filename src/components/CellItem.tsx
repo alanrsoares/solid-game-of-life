@@ -12,7 +12,7 @@ const CellItem: Component<Props> = (props) => {
   return (
     <div
       role="button"
-      className="rounded-full m-px"
+      class="rounded-full m-px"
       onclick={props.onClick}
       style={`background-color: ${
         props.bgColor ?? DEAD_CELL_COLOR

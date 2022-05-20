@@ -120,7 +120,7 @@ export const SOLID_LOGO = (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 166 155.3"
-      className="w-12"
+      class="w-12"
     >
       <defs>
         <linearGradient
