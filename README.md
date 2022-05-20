@@ -18,4 +18,4 @@ pnpm dev
 
 ### License
 
-UNLICENSED
+UNLICENSE
