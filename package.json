@@ -3,7 +3,6 @@
   "version": "1.1.0",
   "private": true,
   "description": "",
-  "homepage": "https://alanrsoares.github.io/solid-game-of-life/",
   "scripts": {
     "start": "vite",
     "dev": "vite",
@@ -16,13 +15,13 @@
   "devDependencies": {
     "@types/node": "^17.0.45",
     "gh-pages": "^4.0.0",
-    "vite": "^3.0.8",
-    "vite-plugin-solid": "^2.3.0",
-    "vite-plugin-windicss": "^1.8.7",
+    "vite": "^3.2.5",
+    "vite-plugin-solid": "^2.4.0",
+    "vite-plugin-windicss": "^1.8.8",
     "windicss": "^3.5.6"
   },
   "dependencies": {
-    "rambda": "^7.2.1",
-    "solid-js": "^1.4.8"
+    "rambda": "^7.4.0",
+    "solid-js": "^1.6.2"
   }
 }
