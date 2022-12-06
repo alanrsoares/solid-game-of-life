@@ -4,7 +4,7 @@ import h from "solid-js/h";
 
 type TagKind = keyof JSX.IntrinsicElements;
 
-const TAGS: TagKind[] = [
+const TAGS = new Set<TagKind>([
   "a",
   "abbr",
   "address",
@@ -176,16 +176,24 @@ const TAGS: TagKind[] = [
   "tspan",
   "use",
   "view",
-];
+]);
 
-export const tw = TAGS.reduce(
+export const tw = [...TAGS].reduce(
   (acc, Tag) => ({
     ...acc,
-    [Tag]: (className: TemplateStringsArray) => (props: any) =>
-      h(Tag, {
-        class: (props.class ?? "").concat(String(className)),
-        ...omit(["class"], props),
-      }),
+    [Tag]:
+      <
+        T extends {
+          class?: string;
+        }
+      >(
+        className: TemplateStringsArray
+      ) =>
+      (props: T) =>
+        h(Tag, {
+          class: (props.class ?? "").concat(String(className)),
+          ...omit(["class"], props),
+        }),
   }),
   {} as {
     [K in TagKind]: (

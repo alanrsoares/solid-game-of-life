@@ -18,7 +18,7 @@ const CellItem: Component<Props> = (props) => {
         props.bgColor ?? DEAD_CELL_COLOR
       }; height: ${cellSize}; width: ${cellSize}; transition: background-color 0.1s ease-out;`}
       {...props}
-    ></div>
+    />
   );
 };
 
