@@ -2,13 +2,14 @@
   "name": "solid-game-of-life",
   "version": "1.1.0",
   "private": true,
-  "description": "",
+  "description": "Solidjs implementation of Conway's Game of Life",
+  "homepage": "https://alanrsoares.github.io/solid-game-of-life/",
   "scripts": {
     "start": "vite",
     "dev": "vite",
     "build": "vite build",
     "serve": "vite preview",
-    "predeploy": "npm run build",
+    "predeploy": "npm run build && node scripts/postbuild.mjs",
     "deploy": "gh-pages -d dist"
   },
   "license": "UNLICENSE",
