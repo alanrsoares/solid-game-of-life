@@ -16,13 +16,13 @@
   "devDependencies": {
     "@types/node": "^17.0.45",
     "gh-pages": "^4.0.0",
-    "vite": "^3.2.5",
-    "vite-plugin-solid": "^2.4.0",
-    "vite-plugin-windicss": "^1.8.8",
+    "vite": "^3.2.7",
+    "vite-plugin-solid": "^2.7.0",
+    "vite-plugin-windicss": "^1.9.1",
     "windicss": "^3.5.6"
   },
   "dependencies": {
-    "rambda": "^7.4.0",
-    "solid-js": "^1.6.2"
+    "rambda": "^7.5.0",
+    "solid-js": "^1.7.12"
   }
 }
