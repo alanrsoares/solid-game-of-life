@@ -17,43 +17,47 @@ const Controls: Component<Props> = (props) => {
   function renderPreviousButton() {
     return props.isPlaying || !props.hasHistory ? (
       <Button variant="blue" disabled>
-        <icons.Previous />
+        <icons.PreviousIcon />
       </Button>
     ) : (
       <Button onclick={props.onPreviousState} variant="blue">
-        <icons.Previous />
+        <icons.PreviousIcon />
       </Button>
     );
   }
 
   function renderNextButton() {
     return props.isPlaying ? (
-      <Button variant="blue" disabled>
-        <icons.Next />
+      <Button variant="blue" disabled aria-label="Next Generation">
+        <icons.NextIcon />
       </Button>
     ) : (
-      <Button onclick={props.onNextState} variant="blue">
-        <icons.Next />
+      <Button
+        onclick={props.onNextState}
+        variant="blue"
+        aria-label="Next Generation"
+      >
+        <icons.NextIcon />
       </Button>
     );
   }
 
   return (
     <div class="w-full flex justify-evenly">
-      <Button onclick={props.onRandom} variant="teal">
-        <icons.Shuffle />
+      <Button onclick={props.onRandom} variant="teal" aria-label="Randomize">
+        <icons.ShuffleIcon />
       </Button>
-      <Button onclick={props.onReset} variant="cyan">
-        <icons.Reset />
+      <Button onclick={props.onReset} variant="cyan" aria-label="Reset">
+        <icons.ResetIcon />
       </Button>
       {renderPreviousButton()}
       {renderNextButton()}
       {props.isPlaying ? (
-        <Button onclick={props.onTogglePlay} variant="red">
+        <Button onclick={props.onTogglePlay} variant="red" aria-label="Pause">
           <icons.Pause />
         </Button>
       ) : (
-        <Button onclick={props.onTogglePlay} variant="green">
+        <Button onclick={props.onTogglePlay} variant="green" aria-label="Play">
           <icons.Play />
         </Button>
       )}

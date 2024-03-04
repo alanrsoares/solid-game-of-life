@@ -1,6 +1,5 @@
-export const Shuffle = () => (
+export const ShuffleIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512">
-    <title>Shuffle</title>
     <path
       fill="none"
       stroke="currentColor"
@@ -20,9 +19,8 @@ export const Shuffle = () => (
   </svg>
 );
 
-export const Reset = () => (
+export const ResetIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512">
-    <title>Refresh</title>
     <path
       d="M320 146s24.36-12-64-12a160 160 0 10160 160"
       fill="none"
@@ -42,9 +40,8 @@ export const Reset = () => (
   </svg>
 );
 
-export const Next = () => (
+export const NextIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512">
-    <title>Play Skip Forward</title>
     <path
       d="M112 111v290c0 17.44 17 28.52 31 20.16l247.9-148.37c12.12-7.25 12.12-26.33 0-33.58L143 90.84c-14-8.36-31 2.72-31 20.16z"
       fill="none"
@@ -63,13 +60,12 @@ export const Next = () => (
   </svg>
 );
 
-export const Previous = () => (
+export const PreviousIcon = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     class="ionicon transform rotate-180"
     viewBox="0 0 512 512"
   >
-    <title>Play Skip Forward</title>
     <path
       d="M112 111v290c0 17.44 17 28.52 31 20.16l247.9-148.37c12.12-7.25 12.12-26.33 0-33.58L143 90.84c-14-8.36-31 2.72-31 20.16z"
       fill="none"
@@ -90,7 +86,6 @@ export const Previous = () => (
 
 export const Play = () => (
   <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512">
-    <title>Play</title>
     <path
       d="M112 111v290c0 17.44 17 28.52 31 20.16l247.9-148.37c12.12-7.25 12.12-26.33 0-33.58L143 90.84c-14-8.36-31 2.72-31 20.16z"
       fill="none"
@@ -103,7 +98,6 @@ export const Play = () => (
 
 export const Pause = () => (
   <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512">
-    <title>Pause</title>
     <path
       fill="none"
       stroke="currentColor"
