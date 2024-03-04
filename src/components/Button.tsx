@@ -1,6 +1,6 @@
-import { Component, JSX } from "solid-js";
-import { VariantProps, cva } from "class-variance-authority";
+import { cva, VariantProps } from "class-variance-authority";
 import { omit } from "rambda";
+import { Component, JSX } from "solid-js";
 
 import { cn } from "~/lib/utils";
 
@@ -22,14 +22,14 @@ const variance = cva(
   {
     variants: {
       variant: {
-        blue: "bg-blue-800 ring-blue-800/60",
-        red: "bg-red-800 ring-red-800/60",
-        teal: "bg-teal-800 ring-teal-800/60",
-        cyan: "bg-cyan-800 ring-cyan-800/60",
-        green: "bg-green-800 ring-green-800/60",
+        primary: "bg-blue-800 ring-blue-800/60",
+        destructive: "bg-red-800 ring-red-800/60",
+        secondary: "bg-teal-800 ring-teal-800/60",
+        accent: "bg-cyan-800 ring-cyan-800/60",
+        positive: "bg-green-800 ring-green-800/60",
       },
     },
-  }
+  },
 );
 
 type Props = JSX.IntrinsicElements["button"] & VariantProps<typeof variance>;

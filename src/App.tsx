@@ -1,19 +1,17 @@
-import { Component, createSignal, Index, batch, Accessor } from "solid-js";
 import { inc } from "rambda";
-
-import { SIZES } from "./lib/config";
-import { createGrid, createRandomGrid } from "./lib/utils";
-import { Cell, Grid } from "./lib/types";
-import { getRainbowHSL } from "./lib/colors";
-import { nextState } from "./lib/game";
-
-import Profiler from "./components/Profiler";
-import GridContainer from "./components/GridContainer";
-import CellItem from "./components/CellItem";
-import Controls from "./components/Controls";
-import { SOLID_LOGO } from "./components/icons";
+import { Accessor, batch, Component, createSignal, Index } from "solid-js";
 
 import styles from "./App.module.css";
+import CellItem from "./components/CellItem";
+import Controls from "./components/Controls";
+import GridContainer from "./components/GridContainer";
+import { SOLID_LOGO } from "./components/icons";
+import Profiler from "./components/Profiler";
+import { getRainbowHSL } from "./lib/colors";
+import { SIZES } from "./lib/config";
+import { nextState } from "./lib/game";
+import { Cell, Grid } from "./lib/types";
+import { createGrid, createRandomGrid } from "./lib/utils";
 
 function truncate<T>(length: number, xs: T[]) {
   return xs.length > length ? xs.slice(0, length) : xs;
@@ -31,7 +29,7 @@ const App: Component = () => {
           state: cellState,
           toggle: () => setCellState(!cellState()),
         };
-      })
+      }),
     );
   };
 
@@ -114,9 +112,9 @@ const App: Component = () => {
 
   return (
     <main class={styles.shell}>
-      <div class="grid gap-8 place-items-center md:-mt-24 transform">
-        <h1 class="text-4xl w-full ">
-          <div class="flex flex-wrap mx-auto justify-evenly items-center">
+      <div class="grid transform place-items-center gap-8 md:-mt-24">
+        <h1 class="w-full text-4xl ">
+          <div class="mx-auto flex flex-wrap items-center justify-evenly">
             {SOLID_LOGO}
             <div class="text-[#d5dce5]">Game of Life</div>
           </div>

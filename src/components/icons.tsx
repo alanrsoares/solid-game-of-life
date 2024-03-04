@@ -63,7 +63,7 @@ export const NextIcon = () => (
 export const PreviousIcon = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    class="ionicon transform rotate-180"
+    class="ionicon rotate-180 transform"
     viewBox="0 0 512 512"
   >
     <path

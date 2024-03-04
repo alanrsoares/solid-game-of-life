@@ -1,7 +1,7 @@
 import clsx, { ClassValue } from "clsx";
+import { range } from "rambda";
 import { twMerge } from "tailwind-merge";
 
-import { range } from "rambda";
 import type { Grid } from "./types";
 
 /**
@@ -29,5 +29,5 @@ export const createRandomGrid = (size: number): Grid =>
     row.map(() => ({
       state: () => Math.random() >= 0.8,
       toggle: () => {},
-    }))
+    })),
   );

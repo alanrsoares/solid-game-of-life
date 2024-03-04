@@ -16,7 +16,7 @@ const combinePositions = ({ y, x }: Point): number[][] =>
   [-1, 0, 1].reduce(
     (acc, $y, _, offset) =>
       offset.reduce((b, $x) => ($x || $y ? [...b, [y + $y, x + $x]] : b), acc),
-    []
+    [],
   );
 
 const getIn = (grid: Grid) => (position: number[]) =>
@@ -39,5 +39,5 @@ export const nextState = (grid: Grid): Grid =>
         state: () => state,
         toggle: () => {},
       };
-    })
+    }),
   );

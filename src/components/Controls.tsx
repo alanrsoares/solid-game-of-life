@@ -16,11 +16,11 @@ type Props = {
 const Controls: Component<Props> = (props) => {
   function renderPreviousButton() {
     return props.isPlaying || !props.hasHistory ? (
-      <Button variant="blue" disabled>
+      <Button variant="primary" disabled>
         <icons.PreviousIcon />
       </Button>
     ) : (
-      <Button onClick={props.onPreviousState} variant="blue">
+      <Button onClick={props.onPreviousState} variant="primary">
         <icons.PreviousIcon />
       </Button>
     );
@@ -28,13 +28,13 @@ const Controls: Component<Props> = (props) => {
 
   function renderNextButton() {
     return props.isPlaying ? (
-      <Button variant="blue" disabled aria-label="Next Generation">
+      <Button variant="primary" disabled aria-label="Next Generation">
         <icons.NextIcon />
       </Button>
     ) : (
       <Button
         onClick={props.onNextState}
-        variant="blue"
+        variant="primary"
         aria-label="Next Generation"
       >
         <icons.NextIcon />
@@ -43,21 +43,33 @@ const Controls: Component<Props> = (props) => {
   }
 
   return (
-    <div class="w-full flex justify-evenly">
-      <Button onClick={props.onRandom} variant="teal" aria-label="Randomize">
+    <div class="flex w-full justify-evenly">
+      <Button
+        onClick={props.onRandom}
+        variant="secondary"
+        aria-label="Randomize"
+      >
         <icons.ShuffleIcon />
       </Button>
-      <Button onClick={props.onReset} variant="cyan" aria-label="Reset">
+      <Button onClick={props.onReset} variant="accent" aria-label="Reset">
         <icons.ResetIcon />
       </Button>
       {renderPreviousButton()}
       {renderNextButton()}
       {props.isPlaying ? (
-        <Button onClick={props.onTogglePlay} variant="red" aria-label="Pause">
+        <Button
+          onClick={props.onTogglePlay}
+          variant="destructive"
+          aria-label="Pause"
+        >
           <icons.Pause />
         </Button>
       ) : (
-        <Button onClick={props.onTogglePlay} variant="green" aria-label="Play">
+        <Button
+          onClick={props.onTogglePlay}
+          variant="positive"
+          aria-label="Play"
+        >
           <icons.Play />
         </Button>
       )}

@@ -1,4 +1,5 @@
 import { Component, JSX } from "solid-js";
+
 import { DEAD_CELL_COLOR, SIZES } from "~/lib/config";
 
 type Props = JSX.IntrinsicElements["div"] & {
@@ -12,7 +13,7 @@ const CellItem: Component<Props> = (props) => {
   return (
     <div
       role="button"
-      class="rounded-full m-px"
+      class="m-px rounded-full"
       onClick={props.onClick}
       style={`background-color: ${
         props.bgColor ?? DEAD_CELL_COLOR

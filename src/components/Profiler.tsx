@@ -1,4 +1,4 @@
-import { Component, onMount, onCleanup, createSignal } from "solid-js";
+import { Component, createSignal, onCleanup, onMount } from "solid-js";
 
 type Props = {
   frames: number;
@@ -27,7 +27,7 @@ const Profiler: Component<Props> = (props) => {
 
   return (
     <div
-      class="rounded-full bg-dark text-accent p-2 px-4 font-bold"
+      class="rounded-full bg-dark p-2 px-4 font-bold text-accent"
       classList={{ "opacity-0 border": fps() <= 0 }}
     >
       {fps()} fps

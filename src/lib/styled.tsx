@@ -185,9 +185,9 @@ export const tw = [...TAGS].reduce(
       <
         T extends {
           class?: string;
-        }
+        },
       >(
-        className: TemplateStringsArray
+        className: TemplateStringsArray,
       ) =>
       (props: T) =>
         h(Tag, {
@@ -197,7 +197,7 @@ export const tw = [...TAGS].reduce(
   }),
   {} as {
     [K in TagKind]: (
-      className: TemplateStringsArray
+      className: TemplateStringsArray,
     ) => (props: JSX.IntrinsicElements[K]) => JSXElement;
-  }
+  },
 );
