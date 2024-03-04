@@ -31,3 +31,7 @@ export const createRandomGrid = (size: number): Grid =>
       toggle: () => {},
     })),
   );
+
+export const truncate = <T>(length: number, xs: T[]) => {
+  return xs.length > length ? xs.slice(0, length) : xs;
+};

@@ -11,11 +11,7 @@ import { getRainbowHSL } from "./lib/colors";
 import { SIZES } from "./lib/config";
 import { nextState } from "./lib/game";
 import { Cell, Row } from "./lib/types";
-import { createGrid, createRandomGrid } from "./lib/utils";
-
-function truncate<T>(length: number, xs: T[]) {
-  return xs.length > length ? xs.slice(0, length) : xs;
-}
+import { createGrid, createRandomGrid, truncate } from "./lib/utils";
 
 const App: Component = () => {
   const [sizeIndex, _setSizeIndex] = createSignal(3);
