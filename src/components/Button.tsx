@@ -1,27 +1,43 @@
 import { Component, JSX } from "solid-js";
+import { VariantProps, cva } from "class-variance-authority";
 import { omit } from "rambda";
 
-import { tw } from "~/lib/styled";
+import { cn } from "~/lib/utils";
 
-type Props = JSX.IntrinsicElements["button"] & {
-  variant?: "blue" | "red" | "cyan" | "green" | "teal";
-};
+const variance = cva(
+  ` rounded-full text-white h-16 w-16 p-4 grid place-items-center 
+    hover:opacity-75 
+  
+    focus:outline-none 
+    focus:ring 
+    focus:ring-offset-gray-800 
+    focus:ring-offset-2
 
-const StyedButton = tw.button`rounded-full text-white h-16 w-16 p-4 grid place-items-center 
-  hover:opacity-75 focus:(outline-none ring ring-offset-gray-800 ring-offset-2) 
-  disabled:(opacity-50 filter grayscale cursor-not-allowed) shadow-xl transition-all cursor-pointer`;
+    disabled:opacity-50 
+    disabled:filter 
+    disabled:grayscale 
+    disabled:cursor-not-allowed
+
+    shadow-xl transition-all cursor-pointer `,
+  {
+    variants: {
+      variant: {
+        blue: "bg-blue-800 ring-blue-800/60",
+        red: "bg-red-800 ring-red-800/60",
+        teal: "bg-teal-800 ring-teal-800/60",
+        cyan: "bg-cyan-800 ring-cyan-800/60",
+        green: "bg-green-800 ring-green-800/60",
+      },
+    },
+  }
+);
+
+type Props = JSX.IntrinsicElements["button"] & VariantProps<typeof variance>;
 
 const Button: Component<Props> = ({ variant, ...props }) => (
-  <StyedButton
+  <button
     role="button"
-    class={props.class}
-    classList={{
-      "bg-blue-800 ring-blue-800/60": variant === "blue" || !variant,
-      "bg-red-800 ring-red-800/60": variant === "red",
-      "bg-teal-800 ring-teal-800/60": variant === "teal",
-      "bg-cyan-800 ring-cyan-800/60": variant === "cyan",
-      "bg-green-800 ring-green-800/60": variant === "green",
-    }}
+    class={cn(props.class, variance({ variant }))}
     {...omit(["variant", "class"], props)}
   />
 );

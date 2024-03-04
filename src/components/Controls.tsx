@@ -20,7 +20,7 @@ const Controls: Component<Props> = (props) => {
         <icons.PreviousIcon />
       </Button>
     ) : (
-      <Button onclick={props.onPreviousState} variant="blue">
+      <Button onClick={props.onPreviousState} variant="blue">
         <icons.PreviousIcon />
       </Button>
     );
@@ -33,7 +33,7 @@ const Controls: Component<Props> = (props) => {
       </Button>
     ) : (
       <Button
-        onclick={props.onNextState}
+        onClick={props.onNextState}
         variant="blue"
         aria-label="Next Generation"
       >
@@ -44,20 +44,20 @@ const Controls: Component<Props> = (props) => {
 
   return (
     <div class="w-full flex justify-evenly">
-      <Button onclick={props.onRandom} variant="teal" aria-label="Randomize">
+      <Button onClick={props.onRandom} variant="teal" aria-label="Randomize">
         <icons.ShuffleIcon />
       </Button>
-      <Button onclick={props.onReset} variant="cyan" aria-label="Reset">
+      <Button onClick={props.onReset} variant="cyan" aria-label="Reset">
         <icons.ResetIcon />
       </Button>
       {renderPreviousButton()}
       {renderNextButton()}
       {props.isPlaying ? (
-        <Button onclick={props.onTogglePlay} variant="red" aria-label="Pause">
+        <Button onClick={props.onTogglePlay} variant="red" aria-label="Pause">
           <icons.Pause />
         </Button>
       ) : (
-        <Button onclick={props.onTogglePlay} variant="green" aria-label="Play">
+        <Button onClick={props.onTogglePlay} variant="green" aria-label="Play">
           <icons.Play />
         </Button>
       )}

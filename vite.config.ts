@@ -1,10 +1,9 @@
 import { defineConfig } from "vite";
 import path from "path";
 import solidPlugin from "vite-plugin-solid";
-import windicss from "vite-plugin-windicss";
 
 export default defineConfig({
-  plugins: [solidPlugin(), windicss()],
+  plugins: [solidPlugin()],
   build: {
     target: "esnext",
   },

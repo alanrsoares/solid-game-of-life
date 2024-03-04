@@ -1,6 +1,5 @@
 import { render } from "solid-js/web";
 
-import "virtual:windi.css";
 import "./assets/fonts/gordita/style.css";
 import "./index.css";
 

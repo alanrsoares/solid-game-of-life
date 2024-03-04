@@ -1,6 +1,7 @@
-import { defineConfig } from "windicss/helpers";
+import type { Config } from "tailwindcss";
 
-export default defineConfig({
+const config: Config = {
+  content: ["./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
       fontFamily: {
@@ -15,4 +16,6 @@ export default defineConfig({
       },
     },
   },
-});
+};
+
+export default config;

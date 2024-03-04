@@ -13,7 +13,7 @@ const CellItem: Component<Props> = (props) => {
     <div
       role="button"
       class="rounded-full m-px"
-      onclick={props.onClick}
+      onClick={props.onClick}
       style={`background-color: ${
         props.bgColor ?? DEAD_CELL_COLOR
       }; height: ${cellSize}; width: ${cellSize}; transition: background-color 0.1s ease-out;`}
