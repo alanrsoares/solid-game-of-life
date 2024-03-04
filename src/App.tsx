@@ -1,4 +1,4 @@
-import { inc } from "rambda";
+import { inc, map } from "rambda";
 import { Accessor, batch, Component, createSignal, Index } from "solid-js";
 
 import styles from "./App.module.css";
@@ -10,7 +10,7 @@ import Profiler from "./components/Profiler";
 import { getRainbowHSL } from "./lib/colors";
 import { SIZES } from "./lib/config";
 import { nextState } from "./lib/game";
-import { Cell, Grid } from "./lib/types";
+import { Cell, Row } from "./lib/types";
 import { createGrid, createRandomGrid } from "./lib/utils";
 
 function truncate<T>(length: number, xs: T[]) {
@@ -21,17 +21,16 @@ const App: Component = () => {
   const [sizeIndex, _setSizeIndex] = createSignal(3);
   const gridSize = SIZES[sizeIndex()].grid;
 
-  const withToggles = (grid: Grid): Grid => {
-    return grid.map((row) =>
-      row.map((cell) => {
-        const [cellState, setCellState] = createSignal(cell.state());
-        return {
-          state: cellState,
-          toggle: () => setCellState(!cellState()),
-        };
-      }),
-    );
-  };
+  const withToggles = map<Row>(
+    map((cell) => {
+      const [state, setState] = createSignal(cell.state());
+
+      return {
+        state,
+        toggle: () => setState(!state()),
+      };
+    }),
+  );
 
   let cursor = 0;
   let history = [];
