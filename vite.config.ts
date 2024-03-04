@@ -7,7 +7,6 @@ export default defineConfig({
   plugins: [solidPlugin(), windicss()],
   build: {
     target: "esnext",
-    polyfillDynamicImport: false,
   },
   resolve: {
     alias: {
